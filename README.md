@@ -23,7 +23,7 @@ for httpd](https://hub.docker.com/_/httpd) ready for your use.
 
 #### The goal of this assignment is to create a shell script that controls an application (Apache Httpd) with docker commands.
 1. Your shell script should be called ``httpd-ctl.sh`` and it should be in the ``bin`` subdirectory of this repo
-1. Your script should accept the following options (*Hint* [getopts](http://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/getopts.html) is a bash built-in function that helps you process command-line arguments.  You can find a simple tutorial [here](http://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/getopts.html)).
+1. Your script should accept the following options (*Hint* [getopts](http://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/getopts.html) is a bash built-in function that helps you process command-line arguments.  You can find a simple tutorial [here](examples/05-getopts.sh)).
     * `-h` - (optional argument) display help and exit with an exit code 0.  The help should look similar to what you see when you pass `--help` to standard commands (e.g. `grep --help`).  *Hint*: It's frequently helpful to create a `usage` [function](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html) that prints out the correct command usage.
     * `-d <directory>` - (optional argument) uses the specified directory as the directory containing the content for the web server to serve.  If the `-d` parameter isn't used then no volume mount should be used.  You can test this by running `bin/httpd-ctl.sh -d $PWD/www start`
     * `-p <port>` - (optional argument) specifies the port httpd should listen on when starting.  The default port (if the `-p` option is not specified) should be `8080`.
@@ -34,8 +34,8 @@ for httpd](https://hub.docker.com/_/httpd) ready for your use.
 1. You should run your service in the background (i.e. [Detached mode](https://docs.docker.com/engine/reference/run/#detached--d)).  Try running your container both with and without the detached mode.  Can you think of times when you would want to run one way or the other?
 
 ## Hints
-1. Your reading assignments include overviews of writing shell scripts.  I suggest you read through them to get a good intro to the topic, beyond what was covered in class.
-1. Remember that in order to run a script in linux, it needs to be [marked executable](https://askubuntu.com/questions/471285/how-to-create-execute-a-script-file)!
+1. Your reading assignments include overviews of writing shell scripts.  I suggest you read through them to get a good intro to the topic, beyond what was covered in class.  There are also [examples](examples/) in this repo.
+1. Remember that in order to run a script in linux, it needs to be [marked executable](examples/01-read-write-execute.sh).
 1. I would suggest you develop your script in multiple phases, to make it easier.  For example:
     1. Have your shell script invoke `docker`.  You can start by hardcoding the `docker start` command, and verifying you can start a container with your script.
     2. Add [a switch](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_03.html) in your shell script to handle the `start`/`stop`/`destroy` options
